@@ -1,0 +1,9 @@
+{
+  "name": "peluqueria-canina",
+  "version": "1.0.0",
+  "description": "Sitio web de peluquería canina",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
