@@ -1,14 +1,29 @@
-// Formulario de contacto
-function handleSubmit(e) {
-  e.preventDefault();
-  const msg = document.getElementById('form-msg');
-  msg.textContent = '✅ ¡Solicitud enviada! Te contactamos pronto.';
-  msg.style.color = '#4a7c59';
-  e.target.reset();
-  setTimeout(() => { msg.textContent = ''; }, 5000);
-}
+// ===== MENÚ HAMBURGUESA =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-// Animación de entrada al hacer scroll
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+// Cerrar menú al hacer click en un link
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// Cerrar menú al hacer click fuera
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+});
+
+// ===== ANIMACIÓN AL HACER SCROLL =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
